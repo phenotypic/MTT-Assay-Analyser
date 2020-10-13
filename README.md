@@ -2,7 +2,7 @@
 
 The script will analyse and graph data from multiple 96 well plates from an MTT assay.
 
-The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficay of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer. I.e. less purple means less living cells, so drug is more effective at killing cells.
+The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficay of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer. In other words, less purple means less living cells, so the drug is more effective at killing cells.
 
 ![MTT](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/MTT_reaction.png/1600px-MTT_reaction.png)
 
@@ -28,7 +28,7 @@ Run from same directory with:
 python3 analyser.py
 ```
 
-The `.csv` analysed is defined by changing the cell type within the script. E.g. for HeLa cells, the cell type is set to `HeLa`, and it will read the `HeLa.csv` data file.
+The `.csv` analysed is defined by changing the cell type within the script. For HeLa cells, for example, the cell type is set to `HeLa`, and it will read the `HeLa.csv` data file.
 
 After running the script, you will be presented with an analysis showing the most and least effective drugs for each of the concentrations across the whole assay data.
 
