@@ -1,6 +1,6 @@
 # MTT-Assay-Analyser
 
-The script will analyse and graph data from multiple 96 well plates from an MTT assay.
+The script will analyse and graph data from multiple [MTT assays](https://en.wikipedia.org/wiki/MTT_assay).
 
 The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficay of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer. In other words, less purple means less living cells, so the drug is more effective at killing cells.
 
