@@ -4,14 +4,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 
-# %viability = ((absorbtion - blank absorbtion) / (control absorbtion - blank absorbtion)) * 100
+# mean cell viability (%) = ((mean absorbtion - blank absorbtion) / (control absorbtion - blank absorbtion)) * 100
 
 cell = 'HeLa'
-
 df = pd.read_csv(cell + '.csv', header=None)
 
 drugCount = int(df.shape[1] / 4)
-
 drug = {}
 deviation = {}
 
@@ -20,10 +18,12 @@ for x in range(drugCount):
     drug[x] = {}
     deviation[x] = {}
 
-    blank = df.iloc[7][startCol:startCol+4].mean()  # If you want to use mean blank for each drug
+    controlAbsorb = df.iloc[0:7][startCol].mean()
+    # blank = df.iloc[7][startCol:startCol+4].mean()  # For mean blank
     for subCol in range(4):
-        drug[x][subCol] = ((df.iloc[0:7][startCol+subCol].mean() - df.iloc[7][startCol+subCol]) / (df.iloc[0:7][startCol].mean() - df.iloc[7][startCol+subCol])) * 100
-        deviation[x][subCol] = statistics.stdev(df.iloc[0:7][startCol+subCol])
+        blank = df.iloc[7][startCol + subCol]  # For column blank
+        drug[x][subCol] = ((df.iloc[0:7][startCol + subCol].mean() - blank) / (controlAbsorb - blank)) * 100
+        deviation[x][subCol] = statistics.stdev(df.iloc[0:7][startCol + subCol])
 
 df = pd.DataFrame(drug)
 deviation = pd.DataFrame(deviation)
