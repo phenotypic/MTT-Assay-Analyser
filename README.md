@@ -2,7 +2,7 @@
 
 The script will analyse and graph data from multiple 96 well plates from an MTT assay.
 
-The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficay of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer.
+The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficay of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer. I.e. less purple means less living cells, so drug is more effective at killing cells.
 
 ![MTT](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/MTT_reaction.png/1600px-MTT_reaction.png)
 
@@ -32,6 +32,6 @@ The `.csv` analysed is defined by changing the cell type within the script. E.g.
 
 After running the script, you will be presented with an analysis showing the most and least effective drugs for each of the concentrations across the whole assay data.
 
-The script will also plot a clustered bar chart showing the mean percentage viability of the cells for each drug type, along with the standard deviation of each column shown as error bars:
+The script will also plot a clustered bar chart showing the mean percentage viability of the cells for each drug type, along with the standard deviation of each column multiplied by 100, shown as error bars:
 
 ![Plate](https://i.ibb.co/m0X0myS/Figure-1.png)
