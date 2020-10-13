@@ -30,7 +30,18 @@ python3 analyser.py
 
 The `.csv` analysed is defined by changing the cell type within the script. For HeLa cells, for example, the cell type is set to `HeLa`, and it will read the `HeLa.csv` data file.
 
-After running the script, you will be presented with an analysis showing the most and least effective drugs for each of the concentrations across the whole assay data.
+After running the script, you will be presented with an analysis showing the most and least effective drugs for each of the concentrations across the whole assay data:
+
+```
+Drug analysis for HeLa cells:
++---------------+----------+-----------+
+| Concentration |   Best   |   Worst   |
++---------------+----------+-----------+
+|      High     | A (0 %)  | C (136 %) |
+|     Medium    | A (5 %)  | C (163 %) |
+|      Low      | A (31 %) | C (147 %) |
++---------------+----------+-----------+ 
+```
 
 The script will also plot a clustered bar chart showing the mean percentage viability of the cells for each drug type, along with the standard deviation of each column multiplied by 100, shown as error bars:
 
