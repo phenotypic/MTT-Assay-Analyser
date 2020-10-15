@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 
-# Mean cell viability (%) = ((mean absorbtion - blank absorbtion) / (control absorbtion - blank absorbtion)) * 100
+# Mean cell viability (%) = ((mean absorption - blank absorption) / (control absorption - blank absorption)) * 100
 
 cell = 'HeLa'
 df = pd.read_csv(cell + '.csv', header=None)
