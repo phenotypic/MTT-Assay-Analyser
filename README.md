@@ -2,17 +2,17 @@
 
 The script will analyse and graph data from multiple [MTT assays](https://en.wikipedia.org/wiki/MTT_assay).
 
-The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficay of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer. In other words, less purple means less living cells, so the drug is more effective at killing cells.
+The MTT assay measures the viability of a group of cells following treatment by a number of drugs. Metabolically active cells after treatment will convert MTT (yellow) to Formazan (purple) via NADPH oxidoreductase enzymes, so the efficacy of the drug can be quantified by measuring absorbance at 560nm using a spectrophotometer. In other words, less purple means less living cells, so the drug is more effective at killing cells.
 
 ![MTT](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/MTT_reaction.png/1600px-MTT_reaction.png)
 
-The script is capable of analysing multiple 96 well plate data in sequence from a `.csv` file - see the `HeLa.csv` file as an example. It expects data from the plate to be in this format:
+The script is capable of analysing data from multiple 96 well plates in sequence from a `.csv` file - see the `HeLa.csv` file as an example. It expects data from the plate to be in this format:
 
 ![Plate](https://i.ibb.co/Y867wkv/Picture-1.png)
 
 The equation used for calculating the mean cell viability for each column of dilutions per drug is:
 ```
-Mean cell viability (%) = ((mean absorbtion - blank absorbtion) / (control absorbtion - blank absorbtion)) * 100
+Mean cell viability (%) = ((mean absorption - blank absorption) / (control absorption - blank absorption)) * 100
 ```
 
 ## Usage
@@ -43,6 +43,6 @@ Drug analysis for HeLa cells:
 +---------------+----------+-----------+ 
 ```
 
-The script will also plot a clustered bar chart showing the mean percentage viability of the cells for each drug type, along with the standard deviation of each column multiplied by 100, shown as error bars:
+The script will also plot a clustered bar chart showing the mean percentage viability of the cells for each drug type, along with the standard deviation of each column, multiplied by 100, shown as error bars:
 
 ![Plate](https://i.ibb.co/m0X0myS/Figure-1.png)
