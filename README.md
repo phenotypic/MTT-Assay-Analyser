@@ -25,10 +25,12 @@ pip3 install ~/MTT-Assay-Analyser/requirements.txt
 
 Run from same directory with:
 ```
-python3 analyser.py
+python3 analyser.py <cell_type> [-o]
 ```
 
-The `.csv` analysed is defined by changing the cell type within the script. For HeLa cells, for example, the cell type is set to `HeLa`, and it will read the `HeLa.csv` data file.
+The `.csv` analysed is defined by changing the cell type called with the script. For HeLa cells, for example, you would run `python3 analyser.py HeLa`, and it will read the `HeLa.csv` data file.
+
+You can add the argument `-o` when calling the script to output the raw data frames for mean cell viability and standard deviation to separate `.csv` files (`<cell_type>-raw-data.csv` and `<cell_type>-stdev-data.csv` respectively).
 
 After running the script, you will be presented with an analysis showing the most and least effective drugs for each of the concentrations across the whole assay data:
 
@@ -40,7 +42,7 @@ Drug analysis for HeLa cells:
 |      High     | A (0 %)  | C (136 %) |
 |     Medium    | A (5 %)  | C (163 %) |
 |      Low      | A (31 %) | C (147 %) |
-+---------------+----------+-----------+ 
++---------------+----------+-----------+
 ```
 
 The script will also plot a clustered bar chart showing the mean percentage viability of the cells for each drug type, along with the standard deviation of each column, multiplied by 100, shown as error bars:

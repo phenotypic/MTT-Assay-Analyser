@@ -1,13 +1,18 @@
 import string
 import statistics
+import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 from prettytable import PrettyTable
 
 # Mean cell viability (%) = ((mean absorption - blank absorption) / (control absorption - blank absorption)) * 100
 
-cell = 'HeLa'
-df = pd.read_csv(cell + '.csv', header=None)
+parser = argparse.ArgumentParser()
+parser.add_argument('type')
+parser.add_argument('-o', action='store_true')
+args = parser.parse_args()
+
+df = pd.read_csv(args.type + '.csv', header=None)
 
 drugCount = int(df.shape[1] / 4)
 drug = {}
@@ -25,12 +30,23 @@ for x in range(drugCount):
         drug[x][subCol] = ((df.iloc[0:7][startCol + subCol].mean() - blank) / (controlAbsorb - blank)) * 100
         deviation[x][subCol] = statistics.stdev(df.iloc[0:7][startCol + subCol])
 
+columns = list(string.ascii_uppercase[0:drugCount])
+labels = ['Control', 'High', 'Medium', 'Low']
+
 df = pd.DataFrame(drug)
 deviation = pd.DataFrame(deviation)
-df.columns = list(string.ascii_uppercase[0:drugCount])
+
+df.columns = columns
+df.index = labels
+deviation.columns = columns
+deviation.index = labels
+
+if args.o:
+    df.to_csv(args.type + '-raw-data.csv')
+    deviation.to_csv(args.type + '-stdev-data.csv')
+
 df.T.plot(kind='bar', yerr=list(deviation.values*100), color=['C0', 'C3', 'C1', 'C2'])
 
-labels = ['Control', 'High', 'Medium', 'Low']
 list = PrettyTable(['Concentration', 'Best', 'Worst'])
 
 for row in range(1, 4):
@@ -38,12 +54,12 @@ for row in range(1, 4):
     worst = df.iloc[row].idxmax() + ' (' + str(round(df.iloc[row].max())) + ' %)'
     list.add_row([labels[row], best, worst])
 
-print('\nDrug analysis for', cell, 'cells:')
+print('\nDrug analysis for', args.type, 'cells:')
 print(list, '\n')
 
 plt.xlabel('Drug')
 plt.ylabel('Mean cell viability (%)')
 plt.legend(labels=labels, title='Concentration')
-plt.title('Viability of ' + cell + ' cells against drugs A-' + string.ascii_uppercase[drugCount - 1])
+plt.title('Viability of ' + args.type + ' cells against drugs A-' + string.ascii_uppercase[drugCount - 1])
 
 plt.show()
