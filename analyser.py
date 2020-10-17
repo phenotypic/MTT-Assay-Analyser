@@ -30,11 +30,11 @@ for x in range(drugCount):
         drug[x][subCol] = ((df.iloc[0:7][startCol + subCol].mean() - blank) / (controlAbsorb - blank)) * 100
         deviation[x][subCol] = statistics.stdev(df.iloc[0:7][startCol + subCol])
 
-columns = list(string.ascii_uppercase[0:drugCount])
-labels = ['Control', 'High', 'Medium', 'Low']
-
 df = pd.DataFrame(drug)
 deviation = pd.DataFrame(deviation)
+
+columns = list(string.ascii_uppercase[0:drugCount])
+labels = ['Control', 'High', 'Medium', 'Low']
 
 df.columns = columns
 df.index = labels
