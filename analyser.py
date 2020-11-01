@@ -45,7 +45,7 @@ if args.o:
     df.to_csv(args.type + '-raw-data.csv')
     deviation.to_csv(args.type + '-stdev-data.csv')
 
-df.T.plot(kind='bar', yerr=list(deviation.values*100), color=['C0', 'C3', 'C1', 'C2'])
+df.T.plot(kind='bar', yerr=list(deviation.values * 100), color=['C0', 'C3', 'C1', 'C2'])
 
 list = PrettyTable(['Concentration', 'Best', 'Worst'])
 
