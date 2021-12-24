@@ -21,7 +21,7 @@ Mean cell viability (%) = ((mean absorption - blank absorption) / (control absor
 
 Download with:
 ```
-git clone https://github.com/Tommrodrigues/MTT-Assay-Analyser.git
+git clone https://github.com/phenotypic/MTT-Assay-Analyser.git
 pip3 install -r ~/MTT-Assay-Analyser/requirements.txt
 ```
 
